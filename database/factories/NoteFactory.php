@@ -3,14 +3,15 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Models\Note::class, function (Faker $faker) {
-    $dateTime = $faker->dateTime();
+    $updated = $faker->optional()->dateTime();
+    $dateTime = $faker->dateTime($updated);
     return [
-        'user_id' => factory(\App\User::class)->create()->id,
-        'category_id' => factory(\App\Models\Category::class)->create()->id,
+        'user_id' => $faker->numberBetween(1, 10),
+        'category_id' => $faker->numberBetween(1, 10),
         'title' => $faker->sentence(),
         'description' => $faker->text(),
         'done' => $faker->boolean(),
         'created_at' => $dateTime,
-        'updated_at' => $dateTime,
+        'updated_at' => $updated,
     ];
 });
