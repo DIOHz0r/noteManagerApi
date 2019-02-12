@@ -17,6 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('categories', 'CategoryController');
+Route::apiResource('categories', 'CategoryController')->middleware('auth:api');
 
-Route::resource('notes', 'NoteController');
+Route::apiResource('notes', 'NoteController')->middleware('auth:api');
+
+Route::post('register', 'Auth\RegisterController@register');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout');
