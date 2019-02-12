@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    public $timestamps = false;
+
     protected $fillable = ['name'];
 
     public function notes()
     {
-        $this->hasMany('App\Modules\Note');
+        return $this->hasMany(Note::class);
     }
 }

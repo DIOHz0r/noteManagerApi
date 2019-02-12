@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
@@ -10,6 +11,11 @@ class Note extends Model
 
     public function category()
     {
-        $this->belongsTo('App\Model\Category');
+        return $this->belongsTo(Category::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
