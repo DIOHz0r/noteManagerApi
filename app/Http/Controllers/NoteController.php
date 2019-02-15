@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\NoteResource;
 use App\Models\Note;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -48,7 +49,7 @@ class NoteController extends Controller
     public function show($id)
     {
         $note = Note::findOrFail($id);
-        return response()->json($note->get());
+        return new NoteResource($note);
     }
 
     /**
