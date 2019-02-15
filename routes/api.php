@@ -21,6 +21,6 @@ Route::apiResource('categories', 'CategoryController')->middleware('auth:api');
 
 Route::apiResource('notes', 'NoteController')->middleware('auth:api');
 
-Route::post('register', 'Auth\RegisterController@register');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout');
+Route::post('register', 'Auth\RegisterController@register')->name('register');
+Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
